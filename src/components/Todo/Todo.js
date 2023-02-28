@@ -3,9 +3,12 @@ import TodoAction from "./TodoAction";
 import TodoList from "./TodoList";
 import TodoFilter from "./TodoFilter";
 import {useSelector} from "react-redux";
+import saveToLocalStorage from "../../hooks/SaveToLocalStorage";
 
 export default function Todo() {
     const todos = useSelector((state) => state.todo)
+    saveToLocalStorage(todos); // save data to localstorage
+
     const filter = useSelector((state) => state.filter)
     const filterByStatus = (todo) => {
         switch (filter.status) {
